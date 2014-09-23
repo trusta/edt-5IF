@@ -9,59 +9,56 @@ module.exports = {
         language: 'FR'
     },
     url: 'http://intranet-if.insa-lyon.fr/temps/5IF.ics',
-    lessons: {
-        projets: {
-            conception: [{
-                id: 'PdC1',
-                title: 'Automatisation d\'un processus de paiement',
-                prof: 'Y. Amghar, L. Brunie',
-                urlParam: 'PdC1',
-                pattern: /.*Dématérialisation d'un processus de paiement.*/
-            }, {
-                id: 'PdC2',
-                title: 'Architecture et déploiement d\'un réseau',
-                prof: 'F. BIENNIER',
-                urlParam: 'PdC2',
-                pattern: /.*Architecture et déploiement d'un réseau.*/
-            }, {
-                id: 'PdC3',
-                title: 'Schéma directeur : étude et scénarios d\'évolution du système d\'information d\'une entreprise',
-                prof: 'M. OU-HALIMA',
-                urlParam: 'PdC3',
-                pattern: /.*Scénario d'évolution architecture informatique.*/
-            }, {
-                id: 'PdC4',
-                title: 'Audit orienté données des systèmes d\'information',
-                prof: 'J-M PETIT',
-                urlParam: 'PdC4',
-                pattern: /.*Audit orienté données.*/
-            }, {
-                id: 'PdC5',
-                title: 'Elaboration d\'un appel d\'offre pour un SI',
-                prof: 'S. CALABRETTO',
-                urlParam: 'PdC5',
-                pattern: /.*Appel d'offres d'un système informatique.*/
-            }, {
-                id: 'PdC6',
-                title: 'BPR et EIS - ERP : Analyse de processus métiers et Systèmes d\'Information pour décideurs (EIS) pour une mutlinationale commerciale',
-                prof: 'A. LEGAIT, B. ERGIN, H. CHAMBE',
-                urlParam: 'PdC6',
-                pattern: /.*Processus métiers\\, SI décideurs EIS.*/
-            }, {
-                id: 'PdC7',
-                title: 'Organisation d\'un programme d\'évolution de système d\'information de grande distribution',
-                prof: 'B/ ERGIN, Y. AMGHAR',
-                urlParam: 'PdC7',
-                pattern: /.*Système d'information logistique.*/
-            }, {
-                id: 'PdC8',
-                title: 'Conception d\'un système de location de vélos en libre service',
-                prof: 'F. DE DINECHIN',
-                urlParam: 'PdC8',
-                pattern: /.*Un système de gestion de vélos urbains en libre-service.*/
-            }],
-            specifique: []
-        }
+    modules: {
+        projets: [{
+            id: 'PdC1',
+            title: 'Automatisation d\'un processus de paiement',
+            prof: 'Y. Amghar, L. Brunie',
+            urlParam: 'PdC1',
+            pattern: /.*Dématérialisation d'un processus de paiement.*/
+        }, {
+            id: 'PdC2',
+            title: 'Architecture et déploiement d\'un réseau',
+            prof: 'F. BIENNIER',
+            urlParam: 'PdC2',
+            pattern: /.*Architecture et déploiement d'un réseau.*/
+        }, {
+            id: 'PdC3',
+            title: 'Schéma directeur : étude et scénarios d\'évolution du système d\'information d\'une entreprise',
+            prof: 'M. OU-HALIMA',
+            urlParam: 'PdC3',
+            pattern: /.*Scénario d'évolution architecture informatique.*/
+        }, {
+            id: 'PdC4',
+            title: 'Audit orienté données des systèmes d\'information',
+            prof: 'J-M PETIT',
+            urlParam: 'PdC4',
+            pattern: /.*Audit orienté données.*/
+        }, {
+            id: 'PdC5',
+            title: 'Elaboration d\'un appel d\'offre pour un SI',
+            prof: 'S. CALABRETTO',
+            urlParam: 'PdC5',
+            pattern: /.*Appel d'offres d'un système informatique.*/
+        }, {
+            id: 'PdC6',
+            title: 'BPR et EIS - ERP : Analyse de processus métiers et Systèmes d\'Information pour décideurs (EIS) pour une mutlinationale commerciale',
+            prof: 'A. LEGAIT, B. ERGIN, H. CHAMBE',
+            urlParam: 'PdC6',
+            pattern: /.*Processus métiers\\, SI décideurs EIS.*/
+        }, {
+            id: 'PdC7',
+            title: 'Organisation d\'un programme d\'évolution de système d\'information de grande distribution',
+            prof: 'B/ ERGIN, Y. AMGHAR',
+            urlParam: 'PdC7',
+            pattern: /.*Système d'information logistique.*/
+        }, {
+            id: 'PdC8',
+            title: 'Conception d\'un système de location de vélos en libre service',
+            prof: 'F. DE DINECHIN',
+            urlParam: 'PdC8',
+            pattern: /.*Un système de gestion de vélos urbains en libre-service.*/
+        }],
         seminaires: {
             insa: [{
                 id: 'A2PF',
@@ -205,8 +202,7 @@ module.exports = {
                 pattern: /.*EI06.*/
             }, {
                 id: 'EI07',
-                title: 'Système d\'information d\'un grand groupe industriel international 
- Les méthodes Agile pour gérer des projets avec un aperçu sur les méthodes SCRUM',
+                title: 'Système d\'information d\'un grand groupe industriel international. Les méthodes Agile pour gérer des projets avec un aperçu sur les méthodes SCRUM',
                 prof: 'VOLVO, EXILIS',
                 urlParam: 'EI07',
                 pattern: /.*EI07.*/
@@ -218,8 +214,7 @@ module.exports = {
                 pattern: /.*EI08.*/
             }, {
                 id: 'EI09',
-                title: 'Maintenabilité des applications & Conseil autour du Grid et du Cloud & Modularité et 
-approche composants',
+                title: 'Maintenabilité des applications & Conseil autour du Grid et du Cloud & Modularité et approche composants',
                 prof: 'SOPRA, ANEO',
                 urlParam: 'EI09',
                 pattern: /.*EI09.*/
@@ -237,7 +232,7 @@ approche composants',
                 urlParam: 'EI11',
                 pattern: /.*EI11.*/
             }],
-            facultatif: [{
+            facultatifs: [{
                 id: 'SECU',
                 title: 'Protection du patrimoine informationnel',
                 prof: 'DCRI',

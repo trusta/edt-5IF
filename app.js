@@ -10,6 +10,15 @@ var icalGenerator = require('ical-generator')();
 
 var config = require('./config/config.js');
 
+var modules = [].concat(
+    config.modules.projets,
+    config.modules.seminaires.insa,
+    config.modules.seminaires.huma,
+    config.modules.seminaires.entreprises,
+    config.modules.seminaires.etrangers,
+    config.modules.seminaires.facultatifs
+);
+
 icalGenerator.setName(config.name);
 icalGenerator.setDomain(config.domain);
 icalGenerator.setProdID(config.prodID);
@@ -20,14 +29,38 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 
 app.get('/calendar', function(req, res) {
-    ical.fromURL(config.url, {}, function(err, events) {
-        async.each(events, function(ev, callback) {
-            console.log('uid :', ev.uid);
-            console.log(ev.summary, 'is in', ev.location, 'on the', ev.start.getDate());
-            icalGenerator.addEvent(ev);
-            callback();
-        }, function() {
-            icalGenerator.serve(res);
+
+    var patterns = [];
+
+    async.each(modules, function(module, callback) {
+        if (req.param(module.urlParam)) {
+            console.log('add pattern :', module.id);
+            patterns.push(module.pattern);
+        }
+        callback();
+    }, function() {
+        ical.fromURL(config.url, {}, function(err, events) {
+            // Loop on all events and add only lessons in modules
+            async.each(Object.keys(events), function(k, callback) {
+                var ev = events[k];
+                async.each(patterns, function(pattern, cb) {
+
+                    // Test if the lesson is in modules
+                    if (ev.summary.match(pattern) !== null) {
+                        console.log('match :', ev.summary);
+                        cb(true);
+                    } else {
+                        cb();
+                    }
+                }, function(result) {
+                    if (result) {
+                        icalGenerator.addEvent(ev);
+                    }
+                    callback();
+                });
+            }, function() {
+                icalGenerator.serve(res);
+            });
         });
     });
 });
