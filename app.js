@@ -6,11 +6,12 @@
 var express = require('express');
 var async = require('async');
 var ical = require('ical');
-var icalGenerator = require('ical-generator')();
 
 var config = require('./config/config.js');
 
 var modules = [].concat(
+    config.modules.lessons.letters,
+    config.modules.lessons.numbers,
     config.modules.projets,
     config.modules.seminaires.insa,
     config.modules.seminaires.huma,
@@ -19,22 +20,22 @@ var modules = [].concat(
     config.modules.seminaires.facultatifs
 );
 
-icalGenerator.setName(config.name);
-icalGenerator.setDomain(config.domain);
-icalGenerator.setProdID(config.prodID);
-
 
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
 
 app.get('/calendar', function(req, res) {
+    var icalGenerator = require('ical-generator')();
 
-    var patterns = [];
+    icalGenerator.setName(config.name);
+    icalGenerator.setDomain(config.domain);
+    icalGenerator.setProdID(config.prodID);
+
+    var patterns = config.modules.common;
 
     async.each(modules, function(module, callback) {
         if (req.param(module.urlParam)) {
-            console.log('add pattern :', module.id);
             patterns.push(module.pattern);
         }
         callback();
@@ -47,7 +48,6 @@ app.get('/calendar', function(req, res) {
 
                     // Test if the lesson is in modules
                     if (ev.summary.match(pattern) !== null) {
-                        console.log('match :', ev.summary);
                         cb(true);
                     } else {
                         cb();

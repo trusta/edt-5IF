@@ -10,6 +10,49 @@ module.exports = {
     },
     url: 'http://intranet-if.insa-lyon.fr/temps/5IF.ics',
     modules: {
+        common: [
+            /.*EPS.*/,
+            /.*IF TD.*/,
+            /.*IF Cours.*/,
+            /.*IF DS.*/,
+            /.*IF(1|2|3|4){0,1} (Huma|OT).*/,
+            /.*IF \.\..*/,
+            /.*CI.O3.*/
+        ],
+        lessons: {
+            letters: [{
+                id: 'GroupeA',
+                title: 'Groupe A',
+                prof: '',
+                urlParam: 'GroupeA',
+                pattern: /.*IF1 Cours.*/
+            }, {
+                id: 'GroupeB',
+                title: 'Groupe B',
+                prof: '',
+                urlParam: 'GroupeB',
+                pattern: /.*IF2 Cours.*/
+            }],
+            numbers: [{
+                id: 'Groupe1',
+                title: 'Groupe 1',
+                prof: '',
+                urlParam: 'Groupe1',
+                pattern: /.*IF1 TD.*/
+            }, {
+                id: 'Groupe2',
+                title: 'Groupe 2',
+                prof: '',
+                urlParam: 'Groupe2',
+                pattern: /.*IF2 TD.*$/
+            }, {
+                id: 'Groupe3',
+                title: 'Groupe 3',
+                prof: '',
+                urlParam: 'Groupe3',
+                pattern: /.*IF3 TD.*$/
+            }]
+        },
         projets: [{
             id: 'PdC1',
             title: 'Automatisation d\'un processus de paiement',
@@ -175,7 +218,7 @@ module.exports = {
                 title: 'Les phases amont d\'un projet projet',
                 prof: 'Banque postale',
                 urlParam: 'EI02',
-                pattern: /.*EI02.*/
+                pattern: /.*(EI02|CI\.O1-1).*/
             }, {
                 id: 'EI03',
                 title: 'R&D. Retours d\'expériences sur les métiers de l\'innovation et de la valorisation',
@@ -237,7 +280,7 @@ module.exports = {
                 title: 'Protection du patrimoine informationnel',
                 prof: 'DCRI',
                 urlParam: 'SECU',
-                pattern: /.*SECU.*/
+                pattern: /.*CI.O2-.*/
             }]
         }
     }
