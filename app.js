@@ -66,7 +66,8 @@ app.get('/calendar', function(req, res) {
                     callback();
                 });
             }, function() {
-                icalGenerator.serve(res);
+                res.send(icalGenerator.toString());
+                res.end();
             });
         });
     });
