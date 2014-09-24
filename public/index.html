@@ -19,7 +19,8 @@
     <div id="wrapper" class="well-lg">
         <h1>Emploi du temps 5IF</h1>
         <p class="lead">Sélectionnez les groupes, séminaires, projets auxquels vous appartenez.</p>
-        <div class="well-sm">
+        <div class="well-sm" ng-if="modules">
+            <h3>Groupes (A ou B)</h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -29,12 +30,7 @@
                         <th>Intervenants</th>
                     </tr>
                 </thead>
-                <tbody ng-if="modules">
-                    <tr>
-                        <td colspan="4">
-                            <h3 class="text-center">Groupes (A ou B)</h3>
-                        </td>
-                    </tr>
+                <tbody>
                     <tr ng-repeat="sem in modules.lessons.letters">
                         <td>
                             <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
@@ -43,11 +39,20 @@
                         <td>{{ sem.title }}</td>
                         <td>{{ sem.prof }}</td>
                     </tr>
+                </tbody>
+            </table>
+
+            <h3>Groupes (1, 2 ou 3)</h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td colspan="4">
-                            <h3 class="text-center">Groupes (1, 2 ou 3)</h3>
-                        </td>
+                        <th></th>
+                        <th>Code</th>
+                        <th>Titre</th>
+                        <th>Intervenants</th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr ng-repeat="sem in modules.lessons.numbers">
                         <td>
                             <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
@@ -56,11 +61,20 @@
                         <td>{{ sem.title }}</td>
                         <td>{{ sem.prof }}</td>
                     </tr>
+                </tbody>
+            </table>
+
+            <h3>Projets de conception</h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td colspan="4">
-                            <h3 class="text-center">Projets de conception</h3>
-                        </td>
+                        <th></th>
+                        <th>Code</th>
+                        <th>Titre</th>
+                        <th>Intervenants</th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr ng-repeat="sem in modules.projets">
                         <td>
                             <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
@@ -69,11 +83,20 @@
                         <td>{{ sem.title }}</td>
                         <td>{{ sem.prof }}</td>
                     </tr>
+                </tbody>
+            </table>
+
+            <h3>Séminaires INSA</h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td colspan="4">
-                            <h3 class="text-center">Séminaires INSA</h3>
-                        </td>
+                        <th></th>
+                        <th>Code</th>
+                        <th>Titre</th>
+                        <th>Intervenants</th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr ng-repeat="sem in modules.seminaires.insa">
                         <td>
                             <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
@@ -82,11 +105,20 @@
                         <td>{{ sem.title }}</td>
                         <td>{{ sem.prof }}</td>
                     </tr>
+                </tbody>
+            </table>
+
+            <h3>Séminaires Huma</h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td colspan="4">
-                            <h3 class="text-center">Séminaires Huma</h3>
-                        </td>
+                        <th></th>
+                        <th>Code</th>
+                        <th>Titre</th>
+                        <th>Intervenants</th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr ng-repeat="sem in modules.seminaires.huma">
                         <td>
                             <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
@@ -95,11 +127,20 @@
                         <td>{{ sem.title }}</td>
                         <td>{{ sem.prof }}</td>
                     </tr>
+                </tbody>
+            </table>
+
+            <h3>Séminaires Entreprises</h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td colspan="4">
-                            <h3 class="text-center">Séminaires Entreprises</h3>
-                        </td>
+                        <th></th>
+                        <th>Code</th>
+                        <th>Titre</th>
+                        <th>Intervenants</th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr ng-repeat="sem in modules.seminaires.entreprises">
                         <td>
                             <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
@@ -108,11 +149,20 @@
                         <td>{{ sem.title }}</td>
                         <td>{{ sem.prof }}</td>
                     </tr>
+                </tbody>
+            </table>
+
+            <h3>Séminaires Etrangers</h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td colspan="4">
-                            <h3 class="text-center">Séminaires Etrangers</h3>
-                        </td>
+                        <th></th>
+                        <th>Code</th>
+                        <th>Titre</th>
+                        <th>Intervenants</th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr ng-repeat="sem in modules.seminaires.etrangers">
                         <td>
                             <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
@@ -121,11 +171,22 @@
                         <td>{{ sem.title }}</td>
                         <td>{{ sem.prof }}</td>
                     </tr>
+                </tbody>
+            </table>
+
+            <h3>Séminaires Facultatifs</h3>
+            </td>
+            </h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td colspan="4">
-                            <h3 class="text-center">Séminaires Facultatifs</h3>
-                        </td>
+                        <th></th>
+                        <th>Code</th>
+                        <th>Titre</th>
+                        <th>Intervenants</th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr ng-repeat="sem in modules.seminaires.facultatifs">
                         <td>
                             <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
