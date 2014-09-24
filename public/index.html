@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Edt-5IF</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+
+<body ng-app="edt" ng-controller="Ctrl">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="wrapper" class="well-lg">
+        <h1>Emploi du temps 5IF</h1>
+        <p class="lead">Sélectionnez les groupes, séminaires, projets auxquels vous appartenez.</p>
+        <div class="well-sm">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Code</th>
+                        <th>Titre</th>
+                        <th>Intervenants</th>
+                    </tr>
+                </thead>
+                <tbody ng-if="modules">
+                    <tr>
+                        <td colspan="4">
+                            <h3 class="text-center">Groupes (A ou B)</h3>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="sem in modules.lessons.letters">
+                        <td>
+                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
+                        </td>
+                        <td></td>
+                        <td>{{ sem.title }}</td>
+                        <td>{{ sem.prof }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <h3 class="text-center">Groupes (1, 2 ou 3)</h3>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="sem in modules.lessons.numbers">
+                        <td>
+                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
+                        </td>
+                        <td></td>
+                        <td>{{ sem.title }}</td>
+                        <td>{{ sem.prof }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <h3 class="text-center">Projets de conception</h3>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="sem in modules.projets">
+                        <td>
+                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
+                        </td>
+                        <td>{{ sem.id }}</td>
+                        <td>{{ sem.title }}</td>
+                        <td>{{ sem.prof }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <h3 class="text-center">Séminaires INSA</h3>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="sem in modules.seminaires.insa">
+                        <td>
+                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
+                        </td>
+                        <td>{{ sem.id }}</td>
+                        <td>{{ sem.title }}</td>
+                        <td>{{ sem.prof }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <h3 class="text-center">Séminaires Huma</h3>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="sem in modules.seminaires.huma">
+                        <td>
+                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
+                        </td>
+                        <td>{{ sem.id }}</td>
+                        <td>{{ sem.title }}</td>
+                        <td>{{ sem.prof }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <h3 class="text-center">Séminaires Entreprises</h3>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="sem in modules.seminaires.entreprises">
+                        <td>
+                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
+                        </td>
+                        <td>{{ sem.id }}</td>
+                        <td>{{ sem.title }}</td>
+                        <td>{{ sem.prof }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <h3 class="text-center">Séminaires Etrangers</h3>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="sem in modules.seminaires.etrangers">
+                        <td>
+                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
+                        </td>
+                        <td>{{ sem.id }}</td>
+                        <td>{{ sem.title }}</td>
+                        <td>{{ sem.prof }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <h3 class="text-center">Séminaires Facultatifs</h3>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="sem in modules.seminaires.facultatifs">
+                        <td>
+                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
+                        </td>
+                        <td>{{ sem.id }}</td>
+                        <td>{{ sem.title }}</td>
+                        <td>{{ sem.prof }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="well-sm" ng-if="link">
+            <h1>Lien</h1>
+            <p class="lead">Copiez/Collez ce lien dans votre agenda préféré.</p>
+            <a ng-href="{{ link }}" class="btn btn-default">Lien</a>
+        </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+
+    <script type="text/javascript">
+    var app = angular.module("edt", ["ngResource"]);
+
+    app.service('api', function api($resource) {
+        return $resource('/:action', {
+            action: ''
+        }, {
+            lessons: {
+                method: 'GET',
+                params: {
+                    action: 'lessons'
+                }
+            }
+        });
+    });
+
+    app.controller('Ctrl', function($scope, api) {
+        api.lessons(null, null).$promise.then(function(response) {
+            $scope.modules = response;
+        });
+
+        $scope.selected = {};
+
+        $scope.select = function(module, value) {
+            $scope.selected[module] = value;
+
+            $scope.link = '/calendar?';
+            angular.forEach($scope.selected, function(value, key) {
+                if (value) {
+                    $scope.link += ($scope.link.match(/.*\?$/) ? '' : '&') + key + '=true';
+                }
+            });
+        };
+
+    });
+    </script>
+
+
+
+</body>
+
+</html>

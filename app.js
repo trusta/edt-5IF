@@ -25,6 +25,13 @@ var app = express();
 
 app.set('port', process.env.PORT || 3000);
 
+app.use(express.static(__dirname + '/public'));
+
+app.get('/lessons', function(req, res) {
+    res.json(config.modules);
+    res.end();
+});
+
 app.get('/calendar', function(req, res) {
     var icalGenerator = require('ical-generator')();
 
