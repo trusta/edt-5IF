@@ -18,191 +18,33 @@
 
     <div id="wrapper" class="well-lg">
         <h1>Emploi du temps 5IF</h1>
-        <p class="lead">Sélectionnez les groupes, séminaires, projets auxquels vous appartenez.</p>
-        <div class="well-sm" ng-if="modules">
-            <h3>Groupes (A ou B)</h3>
-            <table class="table table-striped">
+        <p class="lead">1. Sélectionnez les groupes, séminaires, projets auxquels vous appartenez.</p>
+        <div class="well-sm" ng-if="groups">
+            <h4 ng-repeat-start="group in groups">{{group.title}}</h4>
+            <table class="table table-hover table-condensed" ng-repeat-end>
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Code</th>
-                        <th>Titre</th>
-                        <th>Intervenants</th>
+                        <th class="col-sm-1"></th>
+                        <th class="col-sm-1">Code</th>
+                        <th class="col-sm-8">Titre</th>
+                        <th class="col-sm-2">Intervenants</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="sem in modules.lessons.letters">
-                        <td>
-                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
+                    <tr ng-repeat="lesson in group.array" ng-class="{ 'success': selected[lesson.urlParam]}" ng-click="select(lesson.urlParam)">
+                        <td class="col-sm-1">
+                            <input type="checkbox" ng-change="select(lesson.urlParam)" ng-model="selected[lesson.urlParam]" />
                         </td>
-                        <td></td>
-                        <td>{{ sem.title }}</td>
-                        <td>{{ sem.prof }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Groupes (1, 2 ou 3)</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Code</th>
-                        <th>Titre</th>
-                        <th>Intervenants</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="sem in modules.lessons.numbers">
-                        <td>
-                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
-                        </td>
-                        <td></td>
-                        <td>{{ sem.title }}</td>
-                        <td>{{ sem.prof }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Projets de conception</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Code</th>
-                        <th>Titre</th>
-                        <th>Intervenants</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="sem in modules.projets">
-                        <td>
-                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
-                        </td>
-                        <td>{{ sem.id }}</td>
-                        <td>{{ sem.title }}</td>
-                        <td>{{ sem.prof }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Séminaires INSA</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Code</th>
-                        <th>Titre</th>
-                        <th>Intervenants</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="sem in modules.seminaires.insa">
-                        <td>
-                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
-                        </td>
-                        <td>{{ sem.id }}</td>
-                        <td>{{ sem.title }}</td>
-                        <td>{{ sem.prof }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Séminaires Huma</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Code</th>
-                        <th>Titre</th>
-                        <th>Intervenants</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="sem in modules.seminaires.huma">
-                        <td>
-                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
-                        </td>
-                        <td>{{ sem.id }}</td>
-                        <td>{{ sem.title }}</td>
-                        <td>{{ sem.prof }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Séminaires Entreprises</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Code</th>
-                        <th>Titre</th>
-                        <th>Intervenants</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="sem in modules.seminaires.entreprises">
-                        <td>
-                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
-                        </td>
-                        <td>{{ sem.id }}</td>
-                        <td>{{ sem.title }}</td>
-                        <td>{{ sem.prof }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Séminaires Etrangers</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Code</th>
-                        <th>Titre</th>
-                        <th>Intervenants</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="sem in modules.seminaires.etrangers">
-                        <td>
-                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
-                        </td>
-                        <td>{{ sem.id }}</td>
-                        <td>{{ sem.title }}</td>
-                        <td>{{ sem.prof }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Séminaires Facultatifs</h3>
-            </td>
-            </h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Code</th>
-                        <th>Titre</th>
-                        <th>Intervenants</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="sem in modules.seminaires.facultatifs">
-                        <td>
-                            <input type="checkbox" ng-model="value" ng-change="select(sem.urlParam,value)" />
-                        </td>
-                        <td>{{ sem.id }}</td>
-                        <td>{{ sem.title }}</td>
-                        <td>{{ sem.prof }}</td>
+                        <td class="col-sm-1">{{ lesson.id }}</td>
+                        <td class="col-sm-8">{{ lesson.title }}</td>
+                        <td class="col-sm-2">{{ lesson.prof }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-        <div class="well-sm" ng-if="link">
-            <h1>Lien</h1>
-            <p class="lead">Copiez/Collez ce lien dans votre agenda préféré.</p>
-            <a ng-href="{{ link }}" class="btn btn-default">Lien</a>
+        <div class="well-sm">
+            <p class="lead">2. Copiez/Collez ce lien ci-dessous dans votre agenda préféré.</p>
+            <a ng-href="{{ link }}" class="btn btn-success" ng-disabled="!link">Emploi du temps</a>
         </div>
     </div>
 
@@ -231,14 +73,39 @@
 
     app.controller('Ctrl', function($scope, api) {
         api.lessons(null, null).$promise.then(function(response) {
-            $scope.modules = response;
+            $scope.groups = [{
+                title: 'Groupes (A ou B)',
+                array: response.lessons.letters
+            }, {
+                title: 'Groupes (1, 2 ou 3)',
+                array: response.lessons.numbers
+            }, {
+                title: 'Projets de conception',
+                array: response.projets
+            }, {
+                title: 'Séminaires INSA',
+                array: response.seminaires.insa
+            }, {
+                title: 'Séminaires Huma',
+                array: response.seminaires.huma
+            }, {
+                title: 'Séminaires Entreprises',
+                array: response.seminaires.entreprises
+            }, {
+                title: 'Séminaires Etrangers',
+                array: response.seminaires.etrangers
+            }, {
+                title: 'Séminaires Facultatifs',
+                array: response.seminaires.facultatifs
+            }];
         });
 
         $scope.selected = {};
 
-        $scope.select = function(module, value) {
-            $scope.selected[module] = value;
+        $scope.select = function(urlParam) {
+            $scope.selected[urlParam] = !$scope.selected[urlParam];
 
+            // Update link
             $scope.link = '/calendar?';
             angular.forEach($scope.selected, function(value, key) {
                 if (value) {

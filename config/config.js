@@ -21,35 +21,35 @@ module.exports = {
         ],
         lessons: {
             letters: [{
-                id: 'GroupeA',
+                id: 'GA',
                 title: 'Groupe A',
                 prof: '',
-                urlParam: 'GroupeA',
+                urlParam: 'GA',
                 pattern: /.*IF1 Cours.*/
             }, {
-                id: 'GroupeB',
+                id: 'GB',
                 title: 'Groupe B',
                 prof: '',
-                urlParam: 'GroupeB',
+                urlParam: 'GB',
                 pattern: /.*IF2 Cours.*/
             }],
             numbers: [{
-                id: 'Groupe1',
+                id: 'G1',
                 title: 'Groupe 1',
                 prof: '',
-                urlParam: 'Groupe1',
+                urlParam: 'G1',
                 pattern: /.*IF1 TD.*/
             }, {
-                id: 'Groupe2',
+                id: 'G2',
                 title: 'Groupe 2',
                 prof: '',
-                urlParam: 'Groupe2',
+                urlParam: 'G2',
                 pattern: /.*IF2 TD.*$/
             }, {
-                id: 'Groupe3',
+                id: 'G3',
                 title: 'Groupe 3',
                 prof: '',
-                urlParam: 'Groupe3',
+                urlParam: 'G3',
                 pattern: /.*IF3 TD.*$/
             }]
         },
@@ -187,7 +187,7 @@ module.exports = {
                 title: 'Stratégie financière – Le choix des investissements',
                 prof: 'H. CHAMBE',
                 urlParam: 'FIN',
-                pattern: /.*FIN.*/
+                pattern: /.* FIN .*/
             }, {
                 id: 'MHDS',
                 title: 'Management des Hommes, Dialogue social',
