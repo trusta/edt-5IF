@@ -6,6 +6,7 @@
 var express = require('express');
 var async = require('async');
 var ical = require('ical');
+var icalGeneratorModule = require('ical-generator');
 
 var config = require('./config/config.js');
 
@@ -33,13 +34,13 @@ app.get('/lessons', function(req, res) {
 });
 
 app.get('/calendar', function(req, res) {
-    var icalGenerator = require('ical-generator')();
+    var icalGenerator = icalGeneratorModule();
 
     icalGenerator.setName(config.name);
     icalGenerator.setDomain(config.domain);
     icalGenerator.setProdID(config.prodID);
 
-    var patterns = config.modules.common;
+    var patterns = config.modules.common.slice(0);
 
     async.each(modules, function(module, callback) {
         if (req.param(module.urlParam)) {
