@@ -75,10 +75,13 @@
         api.lessons(null, null).$promise.then(function(response) {
             $scope.groups = [{
                 title: 'Groupes (A ou B)',
-                array: response.lessons.letters
+                array: response.common.classes
             }, {
                 title: 'Groupes (1, 2 ou 3)',
-                array: response.lessons.numbers
+                array: response.common.td
+            }, {
+                title: 'Sport et OT',
+                array: response.common.other
             }, {
                 title: 'Projets de conception',
                 array: response.projets

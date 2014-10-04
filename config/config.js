@@ -9,48 +9,56 @@ module.exports = {
         language: 'FR'
     },
     url: 'http://intranet-if.insa-lyon.fr/temps/5IF.ics',
+    replace: [{
+        match: / ATTENTION COLLISION/ig,
+        replacement: ''
+    }],
     modules: {
-        common: [
-            /.*EPS.*/,
-            /.*IF TD.*/,
-            /.*IF Cours.*/,
-            /.*IF DS.*/,
-            /.*IF(1|2|3|4){0,1} (Huma|OT).*/,
-            /.*IF \.\..*/,
-            /.*CI.O3.*/
-        ],
-        lessons: {
-            letters: [{
+        common: {
+            classes: [{
                 id: 'GA',
                 title: 'Groupe A',
                 prof: '',
                 urlParam: 'GA',
-                pattern: /.*IF1 Cours.*/
+                pattern: /.*(IF1 Cours|IF Cours|IF DS|IF \.\.|IF(1|2|3|4){0,1} Huma|CI.O3).*/
             }, {
                 id: 'GB',
                 title: 'Groupe B',
                 prof: '',
                 urlParam: 'GB',
-                pattern: /.*IF2 Cours.*/
+                pattern: /.*(IF2 Cours|IF Cours|IF DS|IF \.\.|IF(1|2|3|4){0,1} Huma|CI.O3).*/
             }],
-            numbers: [{
+            td: [{
                 id: 'G1',
                 title: 'Groupe 1',
                 prof: '',
                 urlParam: 'G1',
-                pattern: /.*IF1 TD.*/
+                pattern: /.*(IF1 TD|IF TD).*/
             }, {
                 id: 'G2',
                 title: 'Groupe 2',
                 prof: '',
                 urlParam: 'G2',
-                pattern: /.*IF2 TD.*$/
+                pattern: /.*(IF2 TD|IF TD).*$/
             }, {
                 id: 'G3',
                 title: 'Groupe 3',
                 prof: '',
                 urlParam: 'G3',
-                pattern: /.*IF3 TD.*$/
+                pattern: /.*(IF3 TD|IF TD).*$/
+            }],
+            other: [{
+                id: 'EPS',
+                title: 'EPS',
+                prof: '',
+                urlParam: 'EPS',
+                pattern: /.*EPS.*/
+            },{
+                id: 'OT',
+                title: 'OT',
+                prof: '',
+                urlParam: 'OT',
+                pattern: /.*IF(1|2|3|4){0,1} OT.*/
             }]
         },
         projets: [{

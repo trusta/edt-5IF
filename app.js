@@ -11,8 +11,9 @@ var icalGeneratorModule = require('ical-generator');
 var config = require('./config/config.js');
 
 var modules = [].concat(
-    config.modules.lessons.letters,
-    config.modules.lessons.numbers,
+    config.modules.common.classes,
+    config.modules.common.td,
+    config.modules.common.other,
     config.modules.projets,
     config.modules.seminaires.insa,
     config.modules.seminaires.huma,
@@ -40,7 +41,7 @@ app.get('/calendar', function(req, res) {
     icalGenerator.setDomain(config.domain);
     icalGenerator.setProdID(config.prodID);
 
-    var patterns = config.modules.common.slice(0);
+    var patterns = [];
 
     async.each(modules, function(module, callback) {
         if (req.param(module.urlParam)) {
@@ -62,9 +63,16 @@ app.get('/calendar', function(req, res) {
                     }
                 }, function(result) {
                     if (result) {
-                        icalGenerator.addEvent(ev);
+                        async.eachSeries(config.replace, function(replace, cb) {
+                            ev.summary = ev.summary.replace(replace.match, replace.replacement);
+                            cb();
+                        }, function() {
+                            icalGenerator.addEvent(ev);
+                            callback();
+                        });
+                    } else {
+                        callback();
                     }
-                    callback();
                 });
             }, function() {
                 res.send(icalGenerator.toString());
