@@ -20,13 +20,13 @@ module.exports = {
                 title: 'Groupe A',
                 prof: '',
                 urlParam: 'GA',
-                pattern: /.*(IF1 Cours|IF Cours|IF DS|IF \.\.|IF(1|2|3|4){0,1} Huma|CI.O3).*/
+                pattern: /.*(IF1 Cours|IF Cours|IF DS|IF \.\.|IF(1|2|3|4){0,1} Huma (?!EPS)|CI.O3).*/
             }, {
                 id: 'GB',
                 title: 'Groupe B',
                 prof: '',
                 urlParam: 'GB',
-                pattern: /.*(IF2 Cours|IF Cours|IF DS|IF \.\.|IF(1|2|3|4){0,1} Huma|CI.O3).*/
+                pattern: /.*(IF2 Cours|IF Cours|IF DS|IF \.\.|IF(1|2|3|4){0,1} Huma (?!EPS)|CI.O3).*/
             }],
             td: [{
                 id: 'G1',
@@ -53,7 +53,7 @@ module.exports = {
                 prof: '',
                 urlParam: 'EPS',
                 pattern: /.*EPS.*/
-            },{
+            }, {
                 id: 'OT',
                 title: 'OT',
                 prof: '',
