@@ -20,13 +20,13 @@ module.exports = {
                 title: 'Groupe A',
                 prof: '',
                 urlParam: 'GA',
-                pattern: /.*(IF1 Cours|IF Cours|IF DS|IF \.\.|IF(1|2|3|4){0,1} Huma (?!EPS)|CI.O3).*/
+                pattern: /.*(IF1 Cours|IF Cours|IF DS|IF \.\.|IF(1|2|3|4){0,1} Huma (?!EPS)|CI.O3|avec FLOREZ VALENCIA).*/
             }, {
                 id: 'GB',
                 title: 'Groupe B',
                 prof: '',
                 urlParam: 'GB',
-                pattern: /.*(IF2 Cours|IF Cours|IF DS|IF \.\.|IF(1|2|3|4){0,1} Huma (?!EPS)|CI.O3).*/
+                pattern: /.*(IF2 Cours|IF Cours|IF DS|IF \.\.|IF(1|2|3|4){0,1} Huma (?!EPS)|CI.O3|avec FLOREZ VALENCIA).*/
             }],
             td: [{
                 id: 'G1',
@@ -226,7 +226,7 @@ module.exports = {
                 title: 'Les phases amont d\'un projet projet',
                 prof: 'Banque postale',
                 urlParam: 'EI02',
-                pattern: /.*(EI02|CI\.O1-1).*/
+                pattern: /.*EI02.*/
             }, {
                 id: 'EI03',
                 title: 'R&D. Retours d\'expériences sur les métiers de l\'innovation et de la valorisation',
@@ -288,7 +288,7 @@ module.exports = {
                 title: 'Protection du patrimoine informationnel',
                 prof: 'DCRI',
                 urlParam: 'SECU',
-                pattern: /.*CI.O2-.*/
+                pattern: /.*Sécurité -.*/
             }]
         }
     }
