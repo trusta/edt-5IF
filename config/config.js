@@ -109,6 +109,12 @@ module.exports = {
             prof: 'F. DE DINECHIN',
             urlParam: 'PdC8',
             pattern: /.*Un système de gestion de vélos urbains en libre-service.*/
+        }, {
+            id: 'PRJS',
+            title: 'Projet spécifique',
+            prof: '',
+            urlParam: 'PRJS',
+            pattern: /.*Projet spécifique.*/
         }],
         seminaires: {
             insa: [{

@@ -45,7 +45,6 @@ app.get('/calendar', function(req, res) {
 
     async.each(modules, function(module, callback) {
         if (req.param(module.urlParam)) {
-            console.log('url param : ', module.urlParam);
             patterns.push(module.pattern);
         }
         callback();
@@ -54,7 +53,6 @@ app.get('/calendar', function(req, res) {
             // Loop on all events and add only lessons in modules
             async.each(Object.keys(events), function(k, callback) {
                 var ev = events[k];
-                console.log(ev.summary);
                 async.each(patterns, function(pattern, cb) {
 
                     // Test if the lesson is in modules
